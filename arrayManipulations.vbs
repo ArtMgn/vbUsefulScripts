@@ -10,7 +10,7 @@ Public Sub getAllTable()
     Dim var As Variant
     Dim lastR As Double
     
-    lastR = Range("A1").End(xlDown).Row
+    lastR = getLastRow("A1")
     
     var = Range("A1", Cells(lastR, max))
 
@@ -40,18 +40,23 @@ Public Function findMaxColumn() As Integer
 End Function
 
 
-Public Function  findMaxColumn2() as Integer
+Public Function findMaxColumn2() as Integer
 
-    dim max as Integer
-    dim lastR as Double
-    dim rows as String
+    Dim max as Integer
+    Dim lastR as Double
+    Dim rows as String
 
-    lastR = Range("A1").End(xlDown).Row
+    lastR = getLastRow("A1")
     rows = "1:" & lastR
     max = Evaluate("=MAX((" & rows & "<>"""")*COLUMN(" & rows & "))")
  
     findMaxColumn2 = max
 
+End Function
+
+
+Public Function getLastRow(ByVal str As String) As Long
+    getLastRow = Range(str).End(xlDown).row
 End Function
 
 
@@ -71,3 +76,5 @@ Sub imptab(x As Variant)
     Next ligne
 
 End Sub
+
+
