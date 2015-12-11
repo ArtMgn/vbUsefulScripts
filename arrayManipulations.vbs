@@ -76,5 +76,3 @@ Sub imptab(x As Variant)
     Next ligne
 
 End Sub
-
-
